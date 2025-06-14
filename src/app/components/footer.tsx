@@ -11,66 +11,84 @@ import {
 } from "react-icons/fa6";
 import { HiOutlinePhone, HiOutlineMail } from "react-icons/hi";
 import React from "react";
-
-const socialLinks = [
-  { icon: <FaFacebookF />, href: "https://www.facebook.com/#" },
-  { icon: <FaXTwitter />, href: "https://www.twitter.com/#" },
-  { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/#" },
-  { icon: <FaYoutube />, href: "https://www.youtube.com/#" },
-  { icon: <FaInstagram />, href: "https://www.instagram.com/#" },
-  { icon: <FaBehance />, href: "https://www.behance.net/#" },
-  { icon: <FaDribbble />, href: "https://www.dribbble.com/#" },
-];
-
-const services = [
-  { label: "AI Development Services", href: "#" },
-  { label: "Generative AI Development Services", href: "#" },
-  { label: "Product Engineering", href: "#" },
-  { label: "Enterprise Software Development", href: "#" },
-  { label: "Mobile App Development", href: "#" },
-  { label: "Ecommerce Development", href: "#" },
-  { label: "Web Development", href: "#" },
-  { label: "Hire Resources", href: "#" },
-  { label: "Digital Marketing", href: "#" },
-  { label: "Game Development", href: "#" },
-];
-
-const technologies = [
-  { label: "Augmented Reality", href: "#" },
-  { label: "Virtual Reality", href: "#" },
-  { label: "Progressive Web App", href: "#" },
-  { label: "Artificial Intelligence", href: "#" },
-  { label: "Machine Learning Development", href: "#" },
-  { label: "Internet Of Things", href: "#" },
-  { label: "Cloud Computing", href: "#" },
-  { label: "Blockchain Development", href: "#" },
-  { label: "Ui / Ux Design", href: "#" },
-];
-
-const companyLinks = [
-  { label: "About Us", href: "#" },
-  { label: "Career", href: "#" },
-  { label: "Infrastructure", href: "#" },
-  { label: "Testimonials", href: "#" },
-  { label: "Referral Partner Program", href: "#" },
-  { label: "Insights", href: "#" },
-  { label: "News", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Contact Us", href: "#" },
-];
-
-const footerLinks = [
-  { label: "Privacy Policy", href: "#pr" },
-  { label: "Disclaimer", href: "#dis" },
-  { label: "Terms and Conditions", href: "#t&c" },
-  { label: "Standard Policies", href: "#s&p" },
-];
+import { useEffect, useRef, useState } from "react";
 
 const Footer: React.FC = () => {
+  const socialLinks = [
+    { icon: <FaFacebookF />, href: "https://www.facebook.com/#" },
+    { icon: <FaXTwitter />, href: "https://www.twitter.com/#" },
+    { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/#" },
+    { icon: <FaYoutube />, href: "https://www.youtube.com/#" },
+    { icon: <FaInstagram />, href: "https://www.instagram.com/#" },
+    { icon: <FaBehance />, href: "https://www.behance.net/#" },
+    { icon: <FaDribbble />, href: "https://www.dribbble.com/#" },
+  ];
+
+  const services = [
+    { label: "AI Development Services", href: "#" },
+    { label: "Generative AI Development Services", href: "#" },
+    { label: "Product Engineering", href: "#" },
+    { label: "Enterprise Software Development", href: "#" },
+    { label: "Mobile App Development", href: "#" },
+    { label: "Ecommerce Development", href: "#" },
+    { label: "Web Development", href: "#" },
+    { label: "Hire Resources", href: "#" },
+    { label: "Digital Marketing", href: "#" },
+    { label: "Game Development", href: "#" },
+  ];
+
+  const technologies = [
+    { label: "Augmented Reality", href: "#" },
+    { label: "Virtual Reality", href: "#" },
+    { label: "Progressive Web App", href: "#" },
+    { label: "Artificial Intelligence", href: "#" },
+    { label: "Machine Learning Development", href: "#" },
+    { label: "Internet Of Things", href: "#" },
+    { label: "Cloud Computing", href: "#" },
+    { label: "Blockchain Development", href: "#" },
+    { label: "Ui / Ux Design", href: "#" },
+  ];
+
+  const companyLinks = [
+    { label: "About Us", href: "#" },
+    { label: "Career", href: "#" },
+    { label: "Infrastructure", href: "#" },
+    { label: "Testimonials", href: "#" },
+    { label: "Referral Partner Program", href: "#" },
+    { label: "Insights", href: "#" },
+    { label: "News", href: "#" },
+    { label: "Portfolio", href: "#" },
+    { label: "Contact Us", href: "#" },
+  ];
+
+  const footerLinks = [
+    { label: "Privacy Policy", href: "#pr" },
+    { label: "Disclaimer", href: "#dis" },
+    { label: "Terms and Conditions", href: "#t&c" },
+    { label: "Standard Policies", href: "#s&p" },
+  ];
+
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.2 } // adjust based on when you want to trigger
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
   return (
     <footer className="bg-gray-50 text-black px-6 pt-12 relative">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-
         <div>
           <h3 className="text-[23px] text-lg font-bold mb-4">SERVICES</h3>
           <ul className="space-y-2">
@@ -147,17 +165,24 @@ const Footer: React.FC = () => {
                 Rated on Clutch Review
               </h4>
               <div className="flex items-center gap-2">
-                <img src="/clutch-icon.svg" alt="Clutch" className="w-6 h-6" />
+                <img src="/ai-animation.gif" alt="logo" className="w-6 h-6" />
                 <span className="text-red-500 font-bold">4.8</span>
                 <span className="text-yellow-500 text-xs">★★★★★</span>
                 <span className="text-xs text-gray-600">(117)</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-6 mt-4">
-              <img src="/clutch.svg" alt="Clutch" className="h-6" />
-              <img src="/itfirms.svg" alt="ITFirms" className="h-6" />
-              <img src="/goodfirms.svg" alt="GoodFirms" className="h-6" />
+            <div
+              className={`flex items-center gap-6 mt-4 transition-all duration-700 transform ${
+                inView
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-20 opacity-0"
+              }`}
+              ref={ref}
+            >
+              <img src="/ai-animation.gif" alt="first-img" className="h-6" />
+              <img src="/ai-animation.gif" alt="second-img" className="h-6" />
+              <img src="/ai-animation.gif" alt="third-img" className="h-6" />
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3 mt-6 text-white">
