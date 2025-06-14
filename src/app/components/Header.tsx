@@ -20,7 +20,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
     
-        <div className="text-2xl font-bold text-blue-700">TheNineHertz</div>
+        <div className="text-2xl font-bold text-blue-700">AptopsCloud</div>
 
         {/* Desktop Nav */}
 
@@ -30,7 +30,15 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="text-gray-700 hover:text-blue-600 text-sm font-medium transition"
+            style={{
+              backgroundImage: "url('/ai-animation.gif')",
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              color: '#fff' // optional: make text readable
+            }}
             >
+
             AI Devs
         </motion.div>
           {navLinks.map((link) => (
