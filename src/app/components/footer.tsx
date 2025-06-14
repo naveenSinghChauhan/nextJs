@@ -1,5 +1,5 @@
 "use client";
-
+import NewsletterWidget from "./newsletter";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -68,9 +68,9 @@ const footerLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 text-black px-6 pt-12">
+    <footer className="bg-gray-50 text-black px-6 pt-12 relative">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Services */}
+
         <div>
           <h3 className="text-[23px] text-lg font-bold mb-4">SERVICES</h3>
           <ul className="space-y-2">
@@ -87,7 +87,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Technologies */}
         <div>
           <h3 className=" text-[23px] text-lg font-bold mb-4">TECHNOLOGIES</h3>
           <ul className="space-y-2">
@@ -104,7 +103,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Company */}
         <div>
           <h3 className="text-[23px] font-bold mb-4">COMPANY</h3>
           <ul className="space-y-2">
@@ -121,7 +119,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Contact Info */}
         <div>
           <h3 className="text-[23px] text-lg font-bold mb-4">CONTACTS</h3>
           <div className="space-y-4">
@@ -180,6 +177,8 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
+      <NewsletterWidget />
+
       <div className="mt-8">
         <div className="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between py-6 gap-4 text-gray-700 border-t border-gray-300">
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-6 gap-y-2 font-medium">
@@ -191,7 +190,6 @@ const Footer: React.FC = () => {
                 >
                   {link.label}
                 </a>
-                {/* Add separator except after the last item */}
                 {index < footerLinks.length - 1 && (
                   <span className="hidden md:inline">|</span>
                 )}
