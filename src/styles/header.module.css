@@ -1,0 +1,29 @@
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.ai-bg .nav-link::after {
+    content: "AI";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 70px;
+    background-image: url("/ai-animation.gif");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    animation: slide-left 3s;
+    border: none;
+    z-index: -1;
+    color: #fff;
+    /* padding: 24px 24px 24px 46px; */
+  }
+  .desktopNav{
+    border: 2px solid black;
+  }
+  
+  @keyframes slide-left {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+  
