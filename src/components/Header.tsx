@@ -1,0 +1,61 @@
+'use client';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { label: 'Services', href: '#' },
+  { label: 'Portfolio', href: '#' },
+  { label: 'Company', href: '#' },
+  { label: 'Hire Developers', href: '#' },
+  { label: 'Blog', href: '#' },
+  { label: 'Contact', href: '#' },
+];
+
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <header className="fixed top-0 left-0 w-full bg-white shadow z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <div className="text-2xl font-bold text-blue-700">TheNineHertz</div>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-gray-700 hover:text-blue-600 text-sm font-medium transition"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          <button onClick={() => setMobileOpen(!mobileOpen)}>
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white shadow px-4 py-4 space-y-2">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
+              onClick={() => setMobileOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
+  );
+}
