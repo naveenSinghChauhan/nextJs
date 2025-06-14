@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const navLinks = [
   { label: 'Services', href: '#' },
@@ -18,10 +19,20 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
+    
         <div className="text-2xl font-bold text-blue-700">TheNineHertz</div>
 
         {/* Desktop Nav */}
+
         <nav className="hidden md:flex space-x-6">
+        <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-gray-700 hover:text-blue-600 text-sm font-medium transition"
+            >
+            AI Devs
+        </motion.div>
           {navLinks.map((link) => (
             <a
               key={link.label}
