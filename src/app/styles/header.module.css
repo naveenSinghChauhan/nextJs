@@ -1,8 +1,16 @@
+
+body header.transparent-header .navbar-expand-lg{
+  background-color:#030e18;
+}
+header .navbar-expand-lg .navbar-nav {
+  align-items: center;
+}
+ 
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.ai-bg .nav-link::after {
     content: "AI";
     position: absolute;
     left: 0;
-    top: 0;
+    top: -5;
     width: 140px;
     height: 70px;
     background-image: url("/ai-animation.gif");
@@ -10,9 +18,9 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.ai-bg .na
     background-size: 100% auto;
     animation: slide-left 3s;
     border: none;
-    z-index: -1;
+    z-index: 0;
     color: #fff;
-    /* padding: 24px 24px 24px 46px; */
+    padding: 24px 24px 24px 46px;
   }
   .desktopNav{
     border: 2px solid black;
