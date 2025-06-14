@@ -44,7 +44,8 @@ const Banner: React.FC = () => {
   }, [displayedText, isDeleting, wordIndex]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden">
+
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src="/videos/video-1.mp4"
@@ -56,7 +57,8 @@ const Banner: React.FC = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 bg-black/40 text-white">
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 bg-black/40 text-white">
+
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
           Your Digital Partner for
         </h2>
