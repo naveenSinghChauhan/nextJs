@@ -1,17 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState,  useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
-
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+ 
 
   // Toggle dropdown for desktop
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
+   
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
@@ -39,10 +40,12 @@ export default function Header() {
                   </Link>
                 </li>
                 {navLinks.map((link) => (
-                  <li key={link.label} className=" nav-item px-3 py-2 relative">
+                  <li key={link.label} className={`nav-item px-3 py-2 relative ${link.dropdown && 'dropdown mega-dropdown'}`}>
                     <Link
                       href={link.href}
-                      className="text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
+                      className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${ openDropdown === link.label ? 'active text-[#016cd3] font-bold underline' : ''
+                      }`
+                    }
                       onClick={() =>
                         link.dropdown && handleDropdownToggle(link.label)
                       }
@@ -67,8 +70,9 @@ export default function Header() {
                       )}
                     </Link>
                     {link.dropdown && openDropdown === link.label && (
-                      <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-[600px] z-50">
-                        <div className="p-4">
+                      <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-[600px] z-50 dropdown-menu mega-dropdown-menu"
+                      >
+                        <div className="container custom-container">
                           <Link
                             href={link.href}
                             className="block mb-2 font-semibold text-blue-600"
@@ -126,7 +130,7 @@ export default function Header() {
        
 
       {/* Mobile Drawer */}
-      {mobileOpen && (
+      {/* {mobileOpen && (
         <div className="md:hidden bg-white shadow px-4 py-4 space-y-2">
           <Link
             href="/services/artificial-intelligence-development-company"
@@ -175,7 +179,7 @@ export default function Header() {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </header>
   );
 }
