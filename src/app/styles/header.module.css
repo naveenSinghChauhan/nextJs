@@ -2,6 +2,16 @@
 body header.transparent-header .navbar-expand-lg{
   background-color:#030e18;
 }
+body header.transparent-header .navbar-expand-lg:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  clip-path: polygon(10% 0%, 100% 0, 100% 50%, 0% 50%);
+  background-color: #016cd3;
+  width: 20vw;
+  height: 150px;
+}
 header .navbar-expand-lg .navbar-nav {
   align-items: center;
 }
@@ -34,4 +44,50 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.ai-bg .na
       transform: translateX(0%);
     }
   }
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.spacer {
+    width: 7vw;
+  }
   
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn .nav-link:hover .arrow {
+    right: -6px;
+    top: -4px;
+}
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn .nav-link .arrow {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url("/assets/images/arrow-fast.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+/* 
+"#########################
+HEADER RESPONSIVE 
+####################
+*/
+@media screen and (max-width: 1599px) {
+    body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.spacer {
+        width: 4vw;
+    }
+  }
+@media screen and (max-width: 1440px) {
+    body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.spacer {
+        width: 6vw;
+    }
+  }
+@media screen and (max-width: 1399px) {
+    body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.spacer {
+        width: 8vw;
+    }
+}
+
+  
+

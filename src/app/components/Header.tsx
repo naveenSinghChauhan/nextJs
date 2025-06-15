@@ -105,6 +105,13 @@ export default function Header() {
                     )}
                   </li>
                 ))}
+                <li className="nav-item px-3 py-2 spacer">
+                </li>
+                <li className="nav-item quote-btn z-10">
+                  <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[10px] whitespace-nowrap px-[20px] py-[15px] uppercase transition-transform duration-200 ease-linear font-bold">Contact Us
+                  <i className="arrow"></i>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
