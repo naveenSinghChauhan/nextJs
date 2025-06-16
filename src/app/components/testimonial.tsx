@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState } from "react";
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaPlay } from "react-icons/fa";
 
@@ -75,7 +75,7 @@ export default function TestimonialCarousel() {
       <div className="flex flex-col md:flex-row items-start justify-evenly gap-8 md:gap-12">
         {/* Video thumbnail */}
         <div className="relative flex-1 rounded-xl overflow-hidden max-w-md">
-          <img
+          <Image
             src={testimonial.thumbnail}
             alt="video thumbnail"
             className="w-full h-auto object-cover rounded-xl"
@@ -97,7 +97,7 @@ export default function TestimonialCarousel() {
           <FaQuoteLeft className="text-blue-400 text-2xl mb-3" />
           <p className="text-lg mb-6 text-gray-100">{testimonial.quote}</p>
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src={testimonial.avatar}
               alt={testimonial.name}
               className="w-10 h-10 rounded-full"

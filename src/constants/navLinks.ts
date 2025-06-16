@@ -5,6 +5,7 @@ export const  navLinks = [
       dropdown: [
         {
           category: 'Mobile App Development',
+          
           description: 'Innovative, user-friendly mobile apps tailored to your business needs',
           items: [
             { label: 'Mobile App Development', href: '#' },
