@@ -76,7 +76,9 @@ export default function TestimonialCarousel() {
         {/* Video thumbnail */}
         <div className="relative flex-1 rounded-xl overflow-hidden max-w-md">
           <Image
-            src={testimonial.thumbnail}
+            src={`${testimonial.thumbnail}`}
+            width={480}  
+            height={360}
             alt="video thumbnail"
             className="w-full h-auto object-cover rounded-xl"
           />
@@ -99,6 +101,8 @@ export default function TestimonialCarousel() {
           <div className="flex items-center gap-3">
             <Image
               src={testimonial.avatar}
+              width={480}  
+              height={360}
               alt={testimonial.name}
               className="w-10 h-10 rounded-full"
             />
