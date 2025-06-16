@@ -21,7 +21,7 @@ export default function Header() {
               </div>
               <div className="md:ml-auto">
                 <ul className="flex flex-col md:flex-row space-x-4 navbar-nav">
-                  <li className="nav-item px-3 py-2 ai-bg relative">
+                  <li className="nav-item md:px-2 lg:px-3 py-2 ai-bg relative">
                     <Link
                       href="#" 
                       className="text-gray-700 hover:text-blue-600 text-sm transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
@@ -29,7 +29,7 @@ export default function Header() {
                       &nbsp;
                     </Link>
                   </li>
-                  <li className=" nav-item px-3 py-2 relative">
+                  <li className=" nav-item md:px-2 lg:px-3 py-2 relative">
                     <Link
                       href="#"
                       className="text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
@@ -38,7 +38,7 @@ export default function Header() {
                     </Link>
                   </li>
                   {navLinks.map((link) => (
-                    <li key={link.label} className={`nav-item px-3 py-2 relative ${link.dropdown && 'dropdown mega-dropdown'}`}>
+                    <li key={link.label} className={`nav-item md:px-2 lg:px-3 py-2 relative ${link.dropdown && 'dropdown mega-dropdown'}`}>
                       <Link
                         href={link.href}
                         className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${ openDropdown === link.label ? 'active text-[#016cd3] font-bold underline' : ''
@@ -105,10 +105,15 @@ export default function Header() {
                       )}
                     </li>
                   ))}
-                  <li className="nav-item px-3 py-2 spacer">
+                  <li className="nav-item md:px-2 lg:px-3 py-2 spacer">
                   </li>
                   <li className="nav-item quote-btn z-10">
-                    <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[10px] whitespace-nowrap px-[20px] py-[15px] uppercase transition-transform duration-200 ease-linear font-bold">Contact Us
+                    <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold">Sign-up
+                    <i className="arrow"></i>
+                    </Link>
+                  </li>
+                  <li className="nav-item quote-btn z-10">
+                    <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold">Login
                     <i className="arrow"></i>
                     </Link>
                   </li>
