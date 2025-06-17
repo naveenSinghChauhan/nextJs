@@ -5,9 +5,9 @@ import TestimonialCarousel from "./components/testimonial";
 export default function Home() {
   return (
 <>
-{/* <Banner />
+<Banner />
 <TestimonialCarousel />
-<Footer /> */}
+<Footer />
 </>
   );
 }

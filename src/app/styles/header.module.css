@@ -99,6 +99,7 @@ header .mega-dropdown {
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: .25rem;
 }
+
 header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu {
   padding: 30px 0;
   width: 100%;
@@ -117,11 +118,77 @@ header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega
   -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, .2);
   box-shadow: 0 20px 20px rgba(0, 0, 0, .2);
 }
- 
+
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .bdr {
   border-left: 1px solid #ededed;
 }
 
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .nav-tabs {
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 0 0;
+  border-bottom: none;
+}
+
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .nav-tabs .nav-item .nav-link {
+  text-transform: none;
+  padding: 12px 15px 12px 80px;
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+  position: relative;
+  font-weight: 700;
+  border: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+   
+  border-radius: 10px;
+  font-family: ChivoSemiBold;
+}
+
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .nav-tabs .nav-item .nav-link p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #83888c;
+  margin-bottom: 0;
+  font-family: ChivoLight;
+}
+header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu .sub-menu li {
+  padding: 10px 0;
+  -webkit-transition: .6s;
+  -moz-transition: .6s;
+  -ms-transition: .6s;
+  -o-transition: .6s;
+  transition: .6s;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .tab-content .tab-pane .sub-menu li {
+  padding: 5px 0;
+  margin-bottom: 18px;
+}
+header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu .sub-menu li a {
+  font-family: ChivoMedium;
+  color: #000;
+  -webkit-transition: .6s;
+  -moz-transition: .6s;
+  -ms-transition: .6s;
+  -o-transition: .6s;
+  transition: .6s;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 52px;
+  line-height: 42px;
+}
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .tab-content .tab-pane .sub-menu li a {
+  align-items: flex-start;
+  line-height: 22px;
+  padding-left: 0;
+  text-decoration: none;
+}
 /* 
 "#########################
 HEADER RESPONSIVE 
@@ -135,6 +202,9 @@ HEADER RESPONSIVE
   header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu {
     max-width: 1150px;
   }
+  header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu .sub-menu li {
+    padding: 10px;
+}
 
 }
 
@@ -146,9 +216,10 @@ HEADER RESPONSIVE
   header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu {
     max-width: 1150px;
   }
+
   body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .menu-scroll {
     max-height: 500px;
-}
+  }
 }
 
 @media screen and (max-width: 1399px) {
@@ -159,8 +230,19 @@ HEADER RESPONSIVE
   header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu {
     max-width: 1160px;
   }
+
   body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .menu-scroll {
     min-height: 400px;
     max-height: 400px;
+  }
+
+  body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .nav-tabs .nav-item .nav-link p {
+    line-height: 14px;
+  }
+  body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .tab-content .tab-pane .sub-menu li a {
+    font-size: .9rem;
+}
+header .navbar-expand-lg .navbar-nav .dropdown.mega-dropdown .dropdown-menu.mega-dropdown-menu .sub-menu li {
+  padding: 8px;
 }
 }
