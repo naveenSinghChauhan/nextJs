@@ -12,7 +12,7 @@ import {
 import { HiOutlinePhone, HiOutlineMail } from "react-icons/hi";
 import React from "react";
 import { useEffect, useRef, useState } from "react";
-
+import Image from "next/image";
 const Footer: React.FC = () => {
   const socialLinks = [
     { icon: <FaFacebookF />, href: "https://www.facebook.com/#" },
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-[23px] text-lg font-bold mb-4">SERVICES</h3>
           <ul className="space-y-2">
-            {services.map((item, index) => (
+            {services.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
@@ -165,7 +165,12 @@ const Footer: React.FC = () => {
                 Rated on Clutch Review
               </h4>
               <div className="flex items-center gap-2">
-                <img src="/ai-animation.gif" alt="logo" className="w-6 h-6" />
+                <Image
+                width={480}  
+                height={360} 
+                src="/ai-animation.gif" 
+                alt="logo" 
+                className="w-6 h-6" />
                 <span className="text-red-500 font-bold">4.8</span>
                 <span className="text-yellow-500 text-xs">★★★★★</span>
                 <span className="text-xs text-gray-600">(117)</span>
@@ -180,9 +185,18 @@ const Footer: React.FC = () => {
               }`}
               ref={ref}
             >
-              <img src="/ai-animation.gif" alt="first-img" className="h-6" />
-              <img src="/ai-animation.gif" alt="second-img" className="h-6" />
-              <img src="/ai-animation.gif" alt="third-img" className="h-6" />
+              <Image
+               width={480}  
+               height={360} 
+              src="/ai-animation.gif" alt="first-img" className="h-6" />
+              <Image 
+               width={480}  
+               height={360} 
+              src="/ai-animation.gif" alt="second-img" className="h-6" />
+              <Image 
+               width={480}  
+               height={360} 
+              src="/ai-animation.gif" alt="third-img" className="h-6" />
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3 mt-6 text-white">

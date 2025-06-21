@@ -1,174 +1,222 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  // Toggle dropdown for desktop
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
-
+  useEffect(() => {
+    if (openDropdown) {
+      const dropdown = navLinks.find(
+        (link) => link.label === openDropdown
+      )?.dropdown;
+      if (dropdown && dropdown.length > 0 && !selectedCategory) {
+        setSelectedCategory(dropdown[0].category);
+      }
+    }
+  }, [openDropdown, selectedCategory]);
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
-        <nav className="hidden navbar-expand-lg md:block">
+      <nav className="hidden navbar-expand-lg md:block">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
-            <div className="navbar-header md:block">
-              <Link href="#" className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]">AptopsCloud</Link>
-            </div>
-            <div className="md:ml-auto">
-              <ul className="flex flex-col md:flex-row space-x-4 navbar-nav">
-                <li className="nav-item px-3 py-2 ai-bg relative">
+          <div className="navbar-header md:block">
+            <Link
+              href="#"
+              className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
+            >
+              AptopsCloud
+            </Link>
+          </div>
+          <div className="md:ml-auto">
+            <ul className="flex flex-col md:flex-row space-x-4 navbar-nav">
+              <li className="nav-item md:px-2 lg:px-3 py-2 ai-bg relative">
+                <Link
+                  href="#"
+                  className="text-gray-700 hover:text-blue-600 text-sm transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
+                >
+                  &nbsp;
+                </Link>
+              </li>
+              <li className=" nav-item md:px-2 lg:px-3 py-2 relative">
+                <Link
+                  href="#"
+                  className="text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
+                >
+                  Staffing
+                </Link>
+              </li>
+              {navLinks.map((link) => (
+                <li
+                  key={link.label}
+                  className={`nav-item md:px-2 lg:px-3 py-2 relative ${
+                    link.dropdown && "dropdown mega-dropdown"
+                  }`}
+                >
                   <Link
-                    href="#" 
-                    className="text-gray-700 hover:text-blue-600 text-sm transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
+                    href={link.href}
+                    className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${
+                      openDropdown === link.label
+                        ? "active text-[#016cd3] font-bold underline"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      link.dropdown && handleDropdownToggle(link.label)
+                    }
                   >
-                    &nbsp;
+                    {link.label}
+                    {link.dropdown && (
+                      <span className="ml-1">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </span>
+                    )}
                   </Link>
-                </li>
-                <li className=" nav-item px-3 py-2 relative">
-                  <Link
-                    href="#"
-                    className="text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
-                  >
-                    Staffing
-                  </Link>
-                </li>
-                {navLinks.map((link) => (
-                  <li key={link.label} className=" nav-item px-3 py-2 relative">
-                    <Link
-                      href={link.href}
-                      className="text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
-                      onClick={() =>
-                        link.dropdown && handleDropdownToggle(link.label)
-                      }
+                  {link.dropdown && openDropdown === link.label && (
+                    <div
+                      className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu"
+                      style={{
+                        display: openDropdown === link.label ? "block" : "none",
+                      }}
                     >
-                      {link.label}
-                      {link.dropdown && (
-                        <span className="ml-1">
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </span>
-                      )}
-                    </Link>
-                    {link.dropdown && openDropdown === link.label && (
-                      <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 w-[600px] z-50">
-                        <div className="p-4">
+                      <div className="container custom-container">
+                        <div className="all-single-menu absolute right-[26px] top-[8px]">
                           <Link
                             href={link.href}
                             className="block mb-2 font-semibold text-blue-600"
                           >
-                            All {link.label} <span className="ml-1">→</span>
+                            All {link.label}
+                            <FontAwesomeIcon icon={faAngleRight} />
                           </Link>
-                          <div className="grid grid-cols-2 gap-4">
-                            {link.dropdown.map((category) => (
-                              <div key={category.category}>
-                                <h3 className="font-semibold text-gray-800">
-                                  {category.category}
-                                </h3>
-                                <p className="text-sm text-gray-600 mb-2">
-                                  {category.description}
-                                </p>
-                                <ul>
-                                  {category.items.map((item) => (
-                                    <li key={item.label}>
-                                      <Link
-                                        href={item.href}
-                                        className="text-sm text-gray-700 hover:text-blue-600 flex items-center"
-                                      >
-                                        <span className="mr-1">→</span>{" "}
-                                        {item.label}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
+                        </div>
+                        <div className="row flex flex-wrap -mx-3">
+                          <div className="menu-scroll w-full sm:w-8/12 px-2">
+                            <ul
+                              className="nav nav-tabs flex flex-wrap pl-0 mb-0 list-none"
+                              id="menuoneTab"
+                              role="tablist"
+                            >
+                              {link.dropdown.map((category) => (
+                                <li
+                                  key={category.category}
+                                  className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${
+                                    selectedCategory === category.category
+                                      ? "bg-gray-100"
+                                      : ""
+                                  }`}
+                                  onClick={() =>
+                                    setSelectedCategory(category.category)
+                                  }
+                                >
+                                  <Link href={"#"} className="nav-link clr1">
+                                    {category.category}
+                                    <p>{category.description}</p>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="sm:w-1/3 md:w-1/3 bdr">
+                            <div className="tab-content max-h-[550px] overflow-y-auto overflow-x-hidden" id="menuOneTabContent">
+                              <div
+                                className="tab-pane fade"
+                                id={`${selectedCategory}-id`}
+                                role="tabpanel"
+                              >
+                                {selectedCategory &&
+                                  link?.dropdown &&
+                                  (() => {
+                                    const selectedCat = link.dropdown.find(
+                                      (cat) => cat.category === selectedCategory
+                                    );
+
+                                    if (!selectedCat) return null;
+
+                                    return (
+                                      <ul className="sub-menu p-4">
+                                        <li className="mb-0 py-[5px]">
+                                          <h3 className="f-22 sub-heading inline-block font-[ChivoBold]">
+                                            <Link href={selectedCat.categoryHref} className=" text-black hover:text-[#016cd3] items-start leading-[22px] font-bold pl-0 no-underline">
+                                              {selectedCat.category}
+                                              {/* <abbr className="arrow">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                              </abbr> */}
+                                            </Link>
+                                          </h3>
+                                        </li>
+
+                                        {selectedCat.items.map((item, idx) => (
+                                          <li key={idx} className="py-[5px] ">
+                                            <Link
+                                              href={item.href}
+                                              className="items-start text-black leading-[22px hover:text-[#016cd3] text-[0.9rem] font-bold pl-0 no-underline"
+                                            >
+                                             <FontAwesomeIcon icon={faAngleRight} className="text-gray-600 mr-[10px] mt-[3px] text-[#bdbdbd " />
+                                              {item.label}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    );
+                                  })()}
                               </div>
-                            ))}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          <button onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-       
-
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white shadow px-4 py-4 space-y-2">
-          <Link
-            href="/services/artificial-intelligence-development-company"
-            className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-            onClick={() => setMobileOpen(false)}
-          >
-            AI Devs
-          </Link>
-          <Link
-            href="/services/it-staff-augmentation"
-            className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-            onClick={() => setMobileOpen(false)}
-          >
-            Staffing
-          </Link>
-          {navLinks.map((link) => (
-            <div key={link.label}>
-              <Link
-                href={link.href}
-                className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-                onClick={() => !link.dropdown && setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-              {link.dropdown && (
-                <div className="pl-4 space-y-2">
-                  {link.dropdown.map((category) => (
-                    <div key={category.category}>
-                      <h3 className="font-semibold text-gray-800">
-                        {category.category}
-                      </h3>
-                      {category.items.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="block text-sm text-gray-700 hover:text-blue-600"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+                  )}
+                </li>
+              ))}
+              <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li>
+              <li className="nav-item quote-btn z-10">
+                <Link
+                  href="#"
+                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
+                >
+                  Sign-up
+                  <i className="arrow"></i>
+                </Link>
+              </li>
+              <li className="nav-item quote-btn z-10">
+                <Link
+                  href="#"
+                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
+                >
+                  Login
+                  <i className="arrow"></i>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      )}
+      </nav>
+
+      {/* Mobile Menu Icon */}
+      <div className="md:hidden">
+        <button onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
     </header>
   );
 }
