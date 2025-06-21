@@ -1,7 +1,6 @@
 "use client";
 
 import { FaPhoneAlt } from "react-icons/fa";
-import { useState } from "react";
 
 const offices = [
   {
@@ -60,13 +59,13 @@ const offices = [
 ];
 
 export default function ContactSection() {
-  const [fileName, setFileName] = useState("");
+  // const [fileName, setFileName] = useState("");
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) {
-      setFileName(e.target.files[0].name);
-    }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files?.[0]) {
+  //     setFileName(e.target.files[0].name);
+  //   }
+  // };
 
   return (
     <section className="bg-black text-white py-12 px-4 md:px-8 lg:px-20">
