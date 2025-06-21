@@ -9,7 +9,7 @@ body header.transparent-header .navbar-expand-lg:before {
   top: 0;
   clip-path: polygon(10% 0%, 100% 0, 100% 50%, 0% 50%);
   background-color: #016cd3;
-  width: 25vw;
+  width: 23vw;
   height: 150px;
 }
 

@@ -223,7 +223,7 @@ export default function Header() {
                   )}
                 </li>
               ))}
-              <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li>
+              {/* <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li> */}
               <li className="nav-item quote-btn z-10">
                 <Link
                   href="#"
