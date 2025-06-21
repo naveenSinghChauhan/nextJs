@@ -147,7 +147,9 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
   border-radius: 10px;
   font-family: ChivoSemiBold;
 }
-
+body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.mega-dropdown .dropdown-toggle.active .arrow-up {
+  display: block;
+}
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dropdown-menu .nav-tabs .nav-item .nav-link p {
   font-size: 12px;
   line-height: 16px;

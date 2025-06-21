@@ -11,17 +11,26 @@ export default function Header() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
+
   };
+  // useEffect(() => {
+  //   if (openDropdown) {
+  //     const dropdown = navLinks.find(
+  //       (link) => link.label === openDropdown
+  //     )?.dropdown;
+  //     if (dropdown && dropdown.length > 0 && !selectedCategory) {
+  //       setSelectedCategory(dropdown[0].category);
+  //     }
+  //   }
+  // }, [openDropdown, selectedCategory]);
   useEffect(() => {
     if (openDropdown) {
-      const dropdown = navLinks.find(
-        (link) => link.label === openDropdown
-      )?.dropdown;
-      if (dropdown && dropdown.length > 0 && !selectedCategory) {
+      const dropdown = navLinks.find((link) => link.label === openDropdown)?.dropdown;
+      if (dropdown && dropdown.length > 0) {
         setSelectedCategory(dropdown[0].category);
       }
     }
-  }, [openDropdown, selectedCategory]);
+  }, [openDropdown]);
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
       <nav className="hidden navbar-expand-lg md:block">
@@ -47,7 +56,7 @@ export default function Header() {
               <li className=" nav-item md:px-2 lg:px-3 py-2 relative">
                 <Link
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative"
+                  className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative`}
                 >
                   Staffing
                 </Link>
@@ -55,38 +64,41 @@ export default function Header() {
               {navLinks.map((link) => (
                 <li
                   key={link.label}
-                  className={`nav-item md:px-2 lg:px-3 py-2 relative ${
-                    link.dropdown && "dropdown mega-dropdown"
-                  }`}
+                  className={`nav-item md:px-2 lg:px-3 py-2 relative ${link.dropdown && "dropdown mega-dropdown"
+                    }`}
                 >
                   <Link
                     href={link.href}
-                    className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${
-                      openDropdown === link.label
+                    className={`dropdown-toggle text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${openDropdown === link.label
                         ? "active text-[#016cd3] font-bold underline"
                         : ""
-                    }`}
+                      }`}
                     onClick={() =>
                       link.dropdown && handleDropdownToggle(link.label)
                     }
                   >
                     {link.label}
                     {link.dropdown && (
-                      <span className="ml-1">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </span>
+                      <>
+                        <span className="ml-1">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </span>
+                        <abbr
+                          className="arrow-up w-[15px] h-[10px] absolute bottom-[-8px] left-0 right-0 mx-auto border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[10px] border-b-white hidden"
+                        ></abbr>
+                      </>
                     )}
                   </Link>
                   {link.dropdown && openDropdown === link.label && (
@@ -116,11 +128,10 @@ export default function Header() {
                               {link.dropdown.map((category) => (
                                 <li
                                   key={category.category}
-                                  className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${
-                                    selectedCategory === category.category
+                                  className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
                                       ? "bg-gray-100"
                                       : ""
-                                  }`}
+                                    }`}
                                   onClick={() =>
                                     setSelectedCategory(category.category)
                                   }
@@ -134,7 +145,10 @@ export default function Header() {
                             </ul>
                           </div>
                           <div className="sm:w-1/3 md:w-1/3 bdr">
-                            <div className="tab-content max-h-[550px] overflow-y-auto overflow-x-hidden" id="menuOneTabContent">
+                            <div
+                              className="tab-content max-h-[550px] overflow-y-auto overflow-x-hidden"
+                              id="menuOneTabContent"
+                            >
                               <div
                                 className="tab-pane fade"
                                 id={`${selectedCategory}-id`}
@@ -153,7 +167,10 @@ export default function Header() {
                                       <ul className="sub-menu p-4">
                                         <li className="mb-0 py-[5px]">
                                           <h3 className="f-22 sub-heading inline-block font-[ChivoBold]">
-                                            <Link href={selectedCat.categoryHref} className=" text-black hover:text-[#016cd3] items-start leading-[22px] font-bold pl-0 no-underline">
+                                            <Link
+                                              href={selectedCat.categoryHref}
+                                              className=" text-black hover:text-[#016cd3] items-start leading-[22px] font-bold pl-0 no-underline"
+                                            >
                                               {selectedCat.category}
                                               {/* <abbr className="arrow">
                                                 <span></span>
@@ -170,7 +187,10 @@ export default function Header() {
                                               href={item.href}
                                               className="items-start text-black leading-[22px hover:text-[#016cd3] text-[0.9rem] font-bold pl-0 no-underline"
                                             >
-                                             <FontAwesomeIcon icon={faAngleRight} className="text-gray-600 mr-[10px] mt-[3px] text-[#bdbdbd " />
+                                              <FontAwesomeIcon
+                                                icon={faAngleRight}
+                                                className="text-gray-600 mr-[10px] mt-[3px] text-[#bdbdbd "
+                                              />
                                               {item.label}
                                             </Link>
                                           </li>
