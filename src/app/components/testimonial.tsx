@@ -5,10 +5,21 @@ import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaPlay } from "react-icons/
 
 const testimonials = [
   {
+    videoUrl: "https://www.youtube.com/watch?v=X9oi-f1PHZU",
+    thumbnail: "https://img.youtube.com/vi/X9oi-f1PHZU/hqdefault.jpg",
+    quote:
+      "India, officially the Republic of India,[j][20] is a country in South Asia. It is the seventh-largest country by area; the most populous country since 2023;[21] and, since its independence in 1947, the world's most populous democracy.[22][23][24] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[k] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is near Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.",
+    name: "Jade Punski",
+    role: "Co-founder / CEO",
+    company: "DogPack",
+    companyUrl: "https://dogpack.com",
+    avatar: "https://img.youtube.com/vi/X9oi-f1PHZU/hqdefault.jpg",
+  },
+  {
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
     quote:
-      "The commitment shown by the app development team was outstanding. The suggestions provided helped me make better decisions. I highly recommend them.",
+      "India, officially the Republic of India,[j][20] is a country in South Asia. It is the seventh-largest country by area; the most populous country since 2023;[21] and, since its independence in 1947, the world's most populous democracy.[22][23][24] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[k] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is near Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.",
     name: "Jade Punski",
     role: "Co-founder / CEO",
     company: "DogPack",
@@ -16,28 +27,17 @@ const testimonials = [
     avatar: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
   },
   {
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=YdzcMNb9Aqk",
+    thumbnail: "https://img.youtube.com/vi/YdzcMNb9Aqk/hqdefault.jpg",
     quote:
-      "mgirg r igi g knvnw oniwenkr g v d The commitment shown by the app development team was outstanding. The suggestions provided helped me make better decisions. I highly recommend them.",
+      "India, officially the Republic of India,[j][20] is a country in South Asia. It is the seventh-largest country by area; the most populous country since 2023;[21] and, since its independence in 1947, the world's most populous democracy.[22][23][24] Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[k] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is near Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar, and Indonesia.",
     name: "Jade Punski",
     role: "Co-founder / CEO",
     company: "DogPack",
     companyUrl: "https://dogpack.com",
-    avatar: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+    avatar: "https://img.youtube.com/vi/YdzcMNb9Aqk/hqdefault.jpg",
   },
-  {
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-    quote:
-      "fkengonwgnw  feowgniewing w wieonienge The commitment shown by the app development team was outstanding. The suggestions provided helped me make better decisions. I highly recommend them.",
-    name: "Jade Punski",
-    role: "Co-founder / CEO",
-    company: "DogPack",
-    companyUrl: "https://dogpack.com",
-    avatar: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-  },
-  // Add more testimonials if needed
+
 ];
 
 export default function TestimonialCarousel() {
@@ -49,7 +49,7 @@ export default function TestimonialCarousel() {
 
   return (
     <div className="bg-[#071739] text-white px-4 py-12 md:px-20 relative">
-      {/* Top arrows */}
+    
       <div className="absolute top-6 right-6 flex gap-4 z-10">
         <button
           onClick={prev}
@@ -69,11 +69,11 @@ export default function TestimonialCarousel() {
         Our Client Testimonials
       </h2>
       <p className="text-center mb-10 max-w-2xl mx-auto text-gray-300">
-        We follow quality standards to deliver top mobile and web development services ensuring client satisfaction and retention.
+       The NineHertz follows certain quality standards that help provide mobile and web apps development services meeting the client’s expectation. Our strategy has helped us achieve customer satisfaction and a great client retention rate.
       </p>
 
       <div className="flex flex-col md:flex-row items-start justify-evenly gap-8 md:gap-12">
-        {/* Video thumbnail */}
+     
         <div className="relative flex-1 rounded-xl overflow-hidden max-w-md">
           <Image
             src={`${testimonial.thumbnail}`}
@@ -94,7 +94,6 @@ export default function TestimonialCarousel() {
           </a>
         </div>
 
-        {/* Quote + Info */}
         <div className="flex-1 max-w-xl">
           <FaQuoteLeft className="text-blue-400 text-2xl mb-3" />
           <p className="text-lg mb-6 text-gray-100">{testimonial.quote}</p>
