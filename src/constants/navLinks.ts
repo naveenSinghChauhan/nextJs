@@ -2,6 +2,7 @@ export const navLinks = [
   {
     label: "Services",
     href: "#",
+    hasCategoryItem: true,
     dropdown: [
       {
         categoryId: "mobile-app-development",
@@ -139,6 +140,7 @@ export const navLinks = [
   {
     label: "Industries",
     href: "#",
+    hasCategoryItem: true,
     dropdown: [
       {
         categoryId: "logistics",
@@ -238,66 +240,68 @@ export const navLinks = [
   {
     label: "Resources",
     href: "#",
+    hasCategoryItem: false,
   },
   {
     label: "Company",
     href: "#",
+    hasCategoryItem: false,
     dropdown: [
       {
         categoryId: "about-us",
         category: "About Us",
         categoryHref: "#",
         description: "Learn about our app and software development services that help businesses grow and succeed",
-        items: [{ label: "About Us", href: "#" }],
+        // items: [{ label: "About Us", href: "#" }],
       },
       {
         categoryId: "case-studies",
         category: "Case Studies",
         categoryHref: "#",
         description: "Explore our successful projects and innovative solutions that solve real-world challenges",
-        items: [{ label: "Case Studies", href: "#" }],
+        // items: [{ label: "Case Studies", href: "#" }],
       },
       {
         categoryId: "career",
         category: "Career",
         categoryHref: "#",
         description: "Join our team to develop your skills and work in a dynamic environment",
-        items: [{ label: "Career", href: "#" }],
+        // items: [{ label: "Career", href: "#" }],
       },
       {
         categoryId: "infrastructure",
         category: "Infrastructure",
         categoryHref: "#",
         description: "Experience cutting-edge technology and a strong development setup that ensures efficiency and security",
-        items: [{ label: "Infrastructure", href: "#" }],
+        // items: [{ label: "Infrastructure", href: "#" }],
       },
       {
         categoryId: "testimonials",
         category: "Testimonials",
         categoryHref: "#",
         description: "Read what our clients say about our services and how we have helped their businesses",
-        items: [{ label: "Testimonials", href: "#" }],
+        // items: [{ label: "Testimonials", href: "#" }],
       },
       {
         categoryId: "referral-partner-program",
         category: "Referral Partner Program",
         categoryHref: "#",
         description: "Partner with us to refer clients, earn exciting rewards, and grow your network",
-        items: [{ label: "Referral Partner Program", href: "#" }],
+        // items: [{ label: "Referral Partner Program", href: "#" }],
       },
       {
         categoryId: "news",
         category: "News",
         categoryHref: "#",
         description: "Stay informed about our latest achievements, industry trends, technology updates, innovations, and success stories",
-        items: [{ label: "News", href: "#" }],
+        // items: [{ label: "News", href: "#" }],
       },
       {
         categoryId: "portfolio",
         category: "Portfolio",
         categoryHref: "#",
         description: "Discover our top app and software projects that bring ideas to life with creativity and expertise",
-        items: [{ label: "Portfolio", href: "#" }],
+        // items: [{ label: "Portfolio", href: "#" }],
       },
     ],
   },

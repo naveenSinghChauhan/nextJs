@@ -5,6 +5,8 @@ import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { NavItem, DropdownItem } from "@/app/types/navlinkType"
+import { li } from "framer-motion/client";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -25,7 +27,8 @@ export default function Header() {
   // }, [openDropdown, selectedCategory]);
   useEffect(() => {
     if (openDropdown) {
-      const dropdown = navLinks.find((link) => link.label === openDropdown)?.dropdown;
+      const dropdown = navLinks.find((link:NavItem) => link.label === openDropdown && link.hasCategoryItem)?.dropdown;
+      console.log("checking category", dropdown);
       if (dropdown && dropdown.length > 0) {
         setSelectedCategory(dropdown[0].category);
       }
@@ -101,12 +104,12 @@ export default function Header() {
                       </>
                     )}
                   </Link>
-                  {link.dropdown && openDropdown === link.label && (
+                  {link.dropdown && (
                     <div
-                      className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu"
-                      style={{
-                        display: openDropdown === link.label ? "block" : "none",
-                      }}
+                      className={`absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu transition-all duration-300 ease-in-out transform ${openDropdown === link.label ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"} origin-top`}
+                      // style={{
+                      //   display: openDropdown === link.label ? "block" : "none",
+                      // }}
                     >
                       <div className="container custom-container">
                         <div className="all-single-menu absolute right-[26px] top-[8px]">
@@ -119,16 +122,17 @@ export default function Header() {
                           </Link>
                         </div>
                         <div className="row flex flex-wrap -mx-3">
-                          <div className="menu-scroll w-full sm:w-8/12 px-2">
+                          <div className={`menu-scroll px-2 ${link.hasCategoryItem ? 'w-full sm:w-8/12' : 'w-full sm:w-full'}`}>
                             <ul
                               className="nav nav-tabs flex flex-wrap pl-0 mb-0 list-none"
                               id="menuoneTab"
                               role="tablist"
                             >
                               {link.dropdown.map((category) => (
+                                link.hasCategoryItem ? 
                                 <li
                                   key={category.category}
-                                  className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
+                                  className={`nav-item ${link.hasCategoryItem?'basis-1/2':'basis-1/3'} flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
                                       ? "bg-gray-100"
                                       : ""
                                     }`}
@@ -136,7 +140,19 @@ export default function Header() {
                                     setSelectedCategory(category.category)
                                   }
                                 >
-                                  <Link href={"#"} className="nav-link clr1">
+                                  <Link href={category.categoryHref} className="nav-link clr1">
+                                    {category.category}
+                                    <p>{category.description}</p>
+                                  </Link>
+                                </li>:
+                                <li
+                                key={category.category}
+                                className={`nav-item ${link.hasCategoryItem?'basis-1/2':'basis-1/3'} flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
+                                    ? "bg-gray-100"
+                                    : ""
+                                  }`}
+                                >
+                                   <Link href={category.categoryHref} className="nav-link clr1">
                                     {category.category}
                                     <p>{category.description}</p>
                                   </Link>
@@ -157,12 +173,12 @@ export default function Header() {
                                 {selectedCategory &&
                                   link?.dropdown &&
                                   (() => {
-                                    const selectedCat = link.dropdown.find(
+                                    const selectedCat: DropdownItem | undefined = link.dropdown.find(
                                       (cat) => cat.category === selectedCategory
                                     );
 
-                                    if (!selectedCat) return null;
-
+                                    if (!selectedCat || !selectedCat?.items) return null;
+                                    
                                     return (
                                       <ul className="sub-menu p-4">
                                         <li className="mb-0 py-[5px]">
@@ -197,7 +213,8 @@ export default function Header() {
                                         ))}
                                       </ul>
                                     );
-                                  })()}
+                                  })()
+                                  }
                               </div>
                             </div>
                           </div>
