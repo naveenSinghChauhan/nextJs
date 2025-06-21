@@ -6,6 +6,7 @@ export const navLinks = [
       {
         categoryId: "mobile-app-development",
         category: "Mobile App Development",
+        categoryHref: "#",
         description: "Innovative, user-friendly mobile apps tailored to your business needs",
         items: [
           { label: "Mobile App Development", href: "#" },
@@ -22,6 +23,7 @@ export const navLinks = [
       {
         categoryId: "software-development",
         category: "Software Development",
+        categoryHref: "#",
         description: "Custom software solutions designed for scalability and efficiency",
         items: [
           { label: "Enterprise Software Development", href: "#" },
@@ -33,6 +35,7 @@ export const navLinks = [
       {
         categoryId: "web-development",
         category: "Web Development",
+        categoryHref: "#",
         description: "Robust, responsive, and high-performance websites for all industries",
         items: [
           { label: "PHP", href: "#" },
@@ -49,6 +52,7 @@ export const navLinks = [
       {
         categoryId: "game-development",
         category: "Game Development",
+        categoryHref: "#",
         description: "Engaging and immersive gaming experiences with cutting-edge technology",
         items: [
           { label: "Mobile Game", href: "#" },
@@ -69,6 +73,7 @@ export const navLinks = [
       {
         categoryId: "digital-marketing",
         category: "Digital Marketing",
+        categoryHref: "#",
         description: "Data-driven strategies to enhance online visibility, engagement, and growth",
         items: [
           { label: "SEO", href: "#" },
@@ -83,6 +88,7 @@ export const navLinks = [
       {
         categoryId: "on-demand-app-development",
         category: "On-Demand App Development",
+        categoryHref: "#",
         description: "Scalable on-demand solutions tailored for instant service delivery",
         items: [
           { label: "Appointment App Development", href: "#" },
@@ -93,6 +99,7 @@ export const navLinks = [
       {
         categoryId: "ai-development",
         category: "AI Development",
+        categoryHref: "#",
         description: "Advanced AI solutions driving automation, insights, and efficiency",
         items: [
           { label: "Generative AI Development", href: "#" },
@@ -109,6 +116,7 @@ export const navLinks = [
       {
         categoryId: "e-commerce-development",
         category: "E-commerce Development",
+        categoryHref: "#",
         description: "Custom eCommerce platforms designed for seamless shopping experiences",
         items: [
           { label: "E-commerce Website Development", href: "#" },
@@ -120,6 +128,7 @@ export const navLinks = [
       {
         categoryId: "product-engineering",
         category: "Product Engineering",
+        categoryHref: "#",
         description: "End-to-end product development from ideation to market success",
         items: [
           { label: "Product Engineering", href: "#" },
@@ -134,6 +143,7 @@ export const navLinks = [
       {
         categoryId: "logistics",
         category: "Logistics",
+        categoryHref: "#",
         description: "Streamline supply chain with custom logistics software solutions",
         items: [
           { label: "Logistics App Development", href: "#" },
@@ -147,6 +157,7 @@ export const navLinks = [
       {
         categoryId: "healthcare",
         category: "Healthcare",
+        categoryHref: "#",
         description: "Build secure, scalable healthcare software for better patient care",
         items: [
           { label: "Custom Healthcare Software Development", href: "#" },
@@ -158,6 +169,7 @@ export const navLinks = [
       {
         categoryId: "real-estate",
         category: "Real Estate",
+        categoryHref: "#",
         description: "Build a cutting edge real estate apps for seamless property buying and selling",
         items: [
           { label: "Real Estate App Development", href: "#" },
@@ -166,6 +178,7 @@ export const navLinks = [
       {
         categoryId: "travel-hospitality",
         category: "Travel & Hospitality",
+        categoryHref: "#",
         description: "Launch smart travel apps for seamless booking and trip planning",
         items: [
           { label: "Travel App Development", href: "#" },
@@ -175,6 +188,7 @@ export const navLinks = [
       {
         categoryId: "education",
         category: "Education",
+        categoryHref: "#",
         description: "Develop interactive eLearning apps to enhance digital education experiences",
         items: [
           { label: "Education App Development", href: "#" },
@@ -184,6 +198,7 @@ export const navLinks = [
       {
         categoryId: "on-demand",
         category: "On-Demand",
+        categoryHref: "#",
         description: "Custom on-demand apps to connect users with instant services",
         items: [
           { label: "Taxi App Development", href: "#" },
@@ -206,6 +221,7 @@ export const navLinks = [
       {
         categoryId: "media-entertainment",
         category: "Media & Entertainment",
+        categoryHref: "#",
         description: "We dive into the entertainment industry to bring some great app ideas to life.",
         items: [
           { label: "Social Media App Development Company", href: "#" },
@@ -230,48 +246,56 @@ export const navLinks = [
       {
         categoryId: "about-us",
         category: "About Us",
+        categoryHref: "#",
         description: "Learn about our app and software development services that help businesses grow and succeed",
         items: [{ label: "About Us", href: "#" }],
       },
       {
         categoryId: "case-studies",
         category: "Case Studies",
+        categoryHref: "#",
         description: "Explore our successful projects and innovative solutions that solve real-world challenges",
         items: [{ label: "Case Studies", href: "#" }],
       },
       {
         categoryId: "career",
         category: "Career",
+        categoryHref: "#",
         description: "Join our team to develop your skills and work in a dynamic environment",
         items: [{ label: "Career", href: "#" }],
       },
       {
         categoryId: "infrastructure",
         category: "Infrastructure",
+        categoryHref: "#",
         description: "Experience cutting-edge technology and a strong development setup that ensures efficiency and security",
         items: [{ label: "Infrastructure", href: "#" }],
       },
       {
         categoryId: "testimonials",
         category: "Testimonials",
+        categoryHref: "#",
         description: "Read what our clients say about our services and how we have helped their businesses",
         items: [{ label: "Testimonials", href: "#" }],
       },
       {
         categoryId: "referral-partner-program",
         category: "Referral Partner Program",
+        categoryHref: "#",
         description: "Partner with us to refer clients, earn exciting rewards, and grow your network",
         items: [{ label: "Referral Partner Program", href: "#" }],
       },
       {
         categoryId: "news",
         category: "News",
+        categoryHref: "#",
         description: "Stay informed about our latest achievements, industry trends, technology updates, innovations, and success stories",
         items: [{ label: "News", href: "#" }],
       },
       {
         categoryId: "portfolio",
         category: "Portfolio",
+        categoryHref: "#",
         description: "Discover our top app and software projects that bring ideas to life with creativity and expertise",
         items: [{ label: "Portfolio", href: "#" }],
       },

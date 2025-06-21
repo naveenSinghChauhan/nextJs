@@ -14,7 +14,9 @@ export default function Header() {
   };
   useEffect(() => {
     if (openDropdown) {
-      const dropdown = navLinks.find((link) => link.label === openDropdown)?.dropdown;
+      const dropdown = navLinks.find(
+        (link) => link.label === openDropdown
+      )?.dropdown;
       if (dropdown && dropdown.length > 0 && !selectedCategory) {
         setSelectedCategory(dropdown[0].category);
       }
@@ -25,7 +27,12 @@ export default function Header() {
       <nav className="hidden navbar-expand-lg md:block">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
           <div className="navbar-header md:block">
-            <Link href="#" className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]">AptopsCloud</Link>
+            <Link
+              href="#"
+              className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
+            >
+              AptopsCloud
+            </Link>
           </div>
           <div className="md:ml-auto">
             <ul className="flex flex-col md:flex-row space-x-4 navbar-nav">
@@ -46,12 +53,19 @@ export default function Header() {
                 </Link>
               </li>
               {navLinks.map((link) => (
-                <li key={link.label} className={`nav-item md:px-2 lg:px-3 py-2 relative ${link.dropdown && 'dropdown mega-dropdown'}`}>
+                <li
+                  key={link.label}
+                  className={`nav-item md:px-2 lg:px-3 py-2 relative ${
+                    link.dropdown && "dropdown mega-dropdown"
+                  }`}
+                >
                   <Link
                     href={link.href}
-                    className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${openDropdown === link.label ? 'active text-[#016cd3] font-bold underline' : ''
-                      }`
-                    }
+                    className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${
+                      openDropdown === link.label
+                        ? "active text-[#016cd3] font-bold underline"
+                        : ""
+                    }`}
                     onClick={() =>
                       link.dropdown && handleDropdownToggle(link.label)
                     }
@@ -76,9 +90,10 @@ export default function Header() {
                     )}
                   </Link>
                   {link.dropdown && openDropdown === link.label && (
-                    <div className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu"
+                    <div
+                      className="absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu"
                       style={{
-                        display: openDropdown === link.label ? 'block' : 'none',
+                        display: openDropdown === link.label ? "block" : "none",
                       }}
                     >
                       <div className="container custom-container">
@@ -93,15 +108,24 @@ export default function Header() {
                         </div>
                         <div className="row flex flex-wrap -mx-3">
                           <div className="menu-scroll w-full sm:w-8/12 px-2">
-                            <ul className="nav nav-tabs flex flex-wrap pl-0 mb-0 list-none" id="menuoneTab" role="tablist">
+                            <ul
+                              className="nav nav-tabs flex flex-wrap pl-0 mb-0 list-none"
+                              id="menuoneTab"
+                              role="tablist"
+                            >
                               {link.dropdown.map((category) => (
-                                <li key={category.category} className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
-                                  ? "bg-gray-100"
-                                  : ""
+                                <li
+                                  key={category.category}
+                                  className={`nav-item basis-1/2 flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${
+                                    selectedCategory === category.category
+                                      ? "bg-gray-100"
+                                      : ""
                                   }`}
-                                  onClick={() => setSelectedCategory(category.category)}
+                                  onClick={() =>
+                                    setSelectedCategory(category.category)
+                                  }
                                 >
-                                  <Link href={'#'} className="nav-link clr1">
+                                  <Link href={"#"} className="nav-link clr1">
                                     {category.category}
                                     <p>{category.description}</p>
                                   </Link>
@@ -110,24 +134,50 @@ export default function Header() {
                             </ul>
                           </div>
                           <div className="sm:w-1/3 md:w-1/3 bdr">
-                            <div className="tab-content" id="menuOneTabContent">
-                              <div className="tab-pane fade" id={`${selectedCategory}-id`}role="tabpanel">
-                                {selectedCategory && (
-                                  <ul className="list-none sub-menu">
-                                    {link.dropdown
-                                      .find((cat) => cat.category === selectedCategory)
-                                      ?.items.map((item) => (
-                                        <li key={item.label}>
-                                          <Link
-                                            href={item.href}
-                                            className="text-gray-700 hover:text-blue-600 text-sm"
-                                          >
-                                            {item.label}
-                                          </Link>
+                            <div className="tab-content max-h-[550px] overflow-y-auto overflow-x-hidden" id="menuOneTabContent">
+                              <div
+                                className="tab-pane fade"
+                                id={`${selectedCategory}-id`}
+                                role="tabpanel"
+                              >
+                                {selectedCategory &&
+                                  link?.dropdown &&
+                                  (() => {
+                                    const selectedCat = link.dropdown.find(
+                                      (cat) => cat.category === selectedCategory
+                                    );
+
+                                    if (!selectedCat) return null;
+
+                                    return (
+                                      <ul className="sub-menu p-4">
+                                        <li className="mb-0 py-[5px]">
+                                          <h3 className="f-22 sub-heading inline-block font-[ChivoBold]">
+                                            <Link href={selectedCat.categoryHref} className=" text-black hover:text-[#016cd3] items-start leading-[22px] font-bold pl-0 no-underline">
+                                              {selectedCat.category}
+                                              {/* <abbr className="arrow">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                              </abbr> */}
+                                            </Link>
+                                          </h3>
                                         </li>
-                                      ))}
-                                  </ul>
-                                )}
+
+                                        {selectedCat.items.map((item, idx) => (
+                                          <li key={idx} className="py-[5px] ">
+                                            <Link
+                                              href={item.href}
+                                              className="items-start text-black leading-[22px hover:text-[#016cd3] text-[0.9rem] font-bold pl-0 no-underline"
+                                            >
+                                             <FontAwesomeIcon icon={faAngleRight} className="text-gray-600 mr-[10px] mt-[3px] text-[#bdbdbd " />
+                                              {item.label}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    );
+                                  })()}
                               </div>
                             </div>
                           </div>
@@ -137,15 +187,22 @@ export default function Header() {
                   )}
                 </li>
               ))}
-              <li className="nav-item md:px-2 lg:px-3 py-2 spacer">
-              </li>
+              <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li>
               <li className="nav-item quote-btn z-10">
-                <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold">Sign-up
+                <Link
+                  href="#"
+                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
+                >
+                  Sign-up
                   <i className="arrow"></i>
                 </Link>
               </li>
               <li className="nav-item quote-btn z-10">
-                <Link href="#" className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold">Login
+                <Link
+                  href="#"
+                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
+                >
+                  Login
                   <i className="arrow"></i>
                 </Link>
               </li>
@@ -160,59 +217,6 @@ export default function Header() {
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
-
-      {/* Mobile Drawer */}
-      {/* {mobileOpen && (
-        <div className="md:hidden bg-white shadow px-4 py-4 space-y-2">
-          <Link
-            href="/services/artificial-intelligence-development-company"
-            className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-            onClick={() => setMobileOpen(false)}
-          >
-            AI Devs
-          </Link>
-          <Link
-            href="/services/it-staff-augmentation"
-            className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-            onClick={() => setMobileOpen(false)}
-          >
-            Staffing
-          </Link>
-          {navLinks.map((link) => (
-            <div key={link.label}>
-              <Link
-                href={link.href}
-                className="block text-gray-700 hover:text-blue-600 text-base font-medium transition"
-                onClick={() => !link.dropdown && setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-              {link.dropdown && (
-                <div className="pl-4 space-y-2">
-                  {link.dropdown.map((category) => (
-                    <div key={category.category}>
-                      <h3 className="font-semibold text-gray-800">
-                        {category.category}
-                      </h3>
-                      {category.items.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="block text-sm text-gray-700 hover:text-blue-600"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )} */}
     </header>
   );
 }
