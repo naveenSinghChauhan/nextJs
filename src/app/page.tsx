@@ -7,11 +7,11 @@ import ContactSection from "./components/contact";
 export default function Home() {
   return (
 <>
-{/* <Banner />
+<Banner />
 <TestimonialCarousel />
 <NewsSection />
-<ContactSection /> */}
-{/* <Footer /> */}
+<ContactSection />
+<Footer />
  
 </>
   );

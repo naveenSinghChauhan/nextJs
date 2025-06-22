@@ -29,13 +29,31 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
       <nav className="navbar-expand-lg">
         <div className="flex flex-col flex-row w-[100%] gap-[20px] justify-between items-center">
-          <div className="navbar-header w-[10%]">
+          <div className="navbar-header flex">
             <Link
               href="#"
               className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
             >
               AptopsCloud
             </Link>
+            <ul className="mobile-quote flex justify-evenly w-[25%] navbar-nav absolute right-[10px] top-[20px] mr-[70px]">
+              <li className="nav-item quote-btn z-10 self-center">
+                <Link
+                  href="#"
+                  className="nav-link bg-[#016cd3] rounded-[3px] text-white overflow-hidden whitespace-nowrap px-[20px] py-[15px] uppercase transition-transform duration-[200ms] ease-linear font-bold"
+                >
+                  Sign-up
+                </Link>
+              </li>
+              <li className="nav-item quote-btn z-10 self-center">
+                <Link
+                  href="#"
+                  className="nav-link bg-[#016cd3] rounded-[3px] text-white overflow-hidden whitespace-nowrap px-[20px] py-[15px] uppercase transition-transform duration-[200ms] ease-linear font-bold"
+                >
+                  Login
+                </Link>
+              </li>
+            </ul>
           </div>
           <div className="desktop-nav  flex w-[90%] justify-between gap-[15px]">
             <ul className="flex flex-col w-[75%] justify-between flex-row navbar-nav">
@@ -272,9 +290,9 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu Icon */}
-      <div className="mob-menu absolute top-[32px] right-[25px] inline-block z-[9999999] hidden">
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-close h-[27px] w-[30px] cursor-pointer block transition-all duration-[1000ms] ease-[cubic-bezier(.19,1,.22,1)]">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+      <div className="mob-menu absolute top-[20px] right-[25px] inline-block z-[9999999] hidden">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-close h-[27px] w-[30px] cursor-pointer block transition-all duration-[1000ms] ease-[cubic-bezier(.19,1,.22,1)] ">
+          {mobileOpen ? <X size={24}/> : <Menu size={24} className="text-[#a5a5a5]"/>}
         </button>
       </div>
       <MobileMenu showMobile={mobileOpen}/>

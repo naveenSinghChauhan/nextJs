@@ -4,13 +4,12 @@ import { navLinks } from "@/constants/navLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { NavItem, DropdownItem } from "@/app/types/navlinkType";
+import {DropdownItem } from "@/app/types/navlinkType";
 type MobileMenuProps = {
     showMobile: boolean;
 };
 
 export default function MobileMenu({ showMobile }: MobileMenuProps) {
-    const [open, setOpen] = useState(false);
     const [openMenus, setOpenMenus] = useState<Set<string>>(new Set());
     const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
     const toggleMenu = (label: string) => {
@@ -32,7 +31,7 @@ export default function MobileMenu({ showMobile }: MobileMenuProps) {
         setOpenCategories(updatedCategories);
     };
     return (
-        <div className={`mobile-nav2 mobile-main-menu ${showMobile ? 'show-menu block' : 'hidden'}`}>
+        <div className={`mobile-nav2 mobile-main-menu ${showMobile ? 'show-menu' : ''}`}>
             <div className="container-fluid form-controler w-full px-3 mx-auto">
                 <div className="mobile-menu fixed-mobile-menu"><i className="fa fa-bars"></i></div>
                 <div className="mobile_version fixed top-0 bottom-0 left-0 right-full overflow-y-auto overflow-x-hidden bg-white z-[999999] animate-fadein">

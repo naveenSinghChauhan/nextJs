@@ -58,7 +58,9 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn
   right: -6px;
   top: -4px;
 }
-
+.navbar-header{
+  width: 10%;
+}
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn .nav-link .arrow {
   width: 15px;
   height: 15px;
@@ -236,6 +238,12 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
 MOBILE CSS
 ####################
 */
+.mobile-main-menu{
+  display: none;
+}
+.navbar-header .mobile-quote{
+  display: none;
+}
 .mobile-main-menu.show-menu .mobile_version {
   right: 0;
 }
@@ -318,13 +326,20 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
   .mob-menu{
     display: block;
   }
+  .navbar-header .mobile-quote{
+    display: flex;
+  }
+  .navbar-header{
+    width: 100%;
+    height: 75px;
+  }
   body header.transparent-header .navbar-expand-lg::before {
     content: none;
     display: none;
   }
-  /* .mobile-main-menu {
+  .mobile-main-menu.show-menu {
       display: block;
-  } */
+  }
   header .navbar-expand-lg .desktop-nav {
     display: none !important;
 }
