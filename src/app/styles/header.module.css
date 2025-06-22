@@ -20,7 +20,7 @@ header .navbar-expand-lg .navbar-nav {
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.ai-bg .nav-link::after {
   content: "AI";
   position: absolute;
-  left: 0;
+  left: -20px;
   top: -5;
   width: 140px;
   height: 70px;
@@ -58,8 +58,8 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn
 }
 
 body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item.quote-btn .nav-link .arrow {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   display: inline-block;
   background-image: url("/assets/images/arrow-fast.svg");
   background-repeat: no-repeat;

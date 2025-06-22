@@ -36,8 +36,8 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
       <nav className="hidden navbar-expand-lg md:block">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4">
-          <div className="navbar-header md:block">
+        <div className="flex flex-col md:flex-row w-[100%] gap-[20px] md:justify-between md:items-center">
+          <div className="navbar-header md:block w-[10%]">
             <Link
               href="#"
               className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
@@ -45,17 +45,17 @@ export default function Header() {
               AptopsCloud
             </Link>
           </div>
-          <div className="md:ml-auto">
-            <ul className="flex flex-col md:flex-row space-x-4 navbar-nav">
-              <li className="nav-item md:px-2 lg:px-3 py-2 ai-bg relative">
+          <div className="flex w-[90%] justify-between gap-[15px]">
+            <ul className="flex flex-col w-[75%] md:justify-between md:flex-row navbar-nav">
+              <li className="nav-item py-2 ai-bg relative">
                 <Link
                   href="#"
                   className="text-gray-700 hover:text-blue-600 text-sm transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
                 >
                   &nbsp;
                 </Link>
-              </li>
-              <li className=" nav-item md:px-2 lg:px-3 py-2 relative">
+              </li> 
+              <li className=" nav-item  py-2 relative">
                 <Link
                   href="#"
                   className={`text-gray-700 hover:text-blue-600 text-sm font-medium transition nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative`}
@@ -66,7 +66,7 @@ export default function Header() {
               {navLinks.map((link) => (
                 <li
                   key={link.label}
-                  className={`nav-item md:px-2 lg:px-3 py-2 relative ${link.dropdown && "dropdown mega-dropdown"
+                  className={`nav-item py-2 relative ${link.dropdown && "dropdown mega-dropdown"
                     }`}
                 >
                   <Link
@@ -224,7 +224,10 @@ export default function Header() {
                 </li>
               ))}
               {/* <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li> */}
-              <li className="nav-item quote-btn z-10">
+           
+            </ul>
+            <ul className="action-item flex justify-evenly w-[25%] navbar-nav">
+            <li className="nav-item quote-btn z-10 self-center">
                 <Link
                   href="#"
                   className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
@@ -233,10 +236,10 @@ export default function Header() {
                   <i className="arrow"></i>
                 </Link>
               </li>
-              <li className="nav-item quote-btn z-10">
+              <li className="nav-item quote-btn z-10 self-center">
                 <Link
                   href="#"
-                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
+                  className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[12px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
                 >
                   Login
                   <i className="arrow"></i>
