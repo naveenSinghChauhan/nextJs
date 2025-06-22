@@ -12,7 +12,9 @@ body header.transparent-header .navbar-expand-lg:before {
   width: 23vw;
   height: 150px;
 }
-
+.mob-menu{
+  display: none;
+}
 header .navbar-expand-lg .navbar-nav {
   align-items: center;
 }
@@ -305,4 +307,15 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
   .h3, h3 {
       font-size: 1.75rem;
   }
+}
+@media (max-width: 1051px) {
+  .mob-menu{
+    display: block;
+  }
+  /* .mobile-main-menu {
+      display: block;
+  } */
+  header .navbar-expand-lg .collapse.navbar-collapse {
+    display: none !important;
+}
 }

@@ -5,14 +5,13 @@ import Link from "next/link";
 import { navLinks } from "@/constants/navLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { NavItem, DropdownItem } from "@/app/types/navlinkType"
+import { NavItem, DropdownItem } from "@/app/types/navlinkType";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
-
   };
   // useEffect(() => {
   //   if (openDropdown) {
@@ -26,7 +25,9 @@ export default function Header() {
   // }, [openDropdown, selectedCategory]);
   useEffect(() => {
     if (openDropdown) {
-      const dropdown = navLinks.find((link:NavItem) => link.label === openDropdown && link.hasCategoryItem)?.dropdown;
+      const dropdown = navLinks.find(
+        (link: NavItem) => link.label === openDropdown && link.hasCategoryItem
+      )?.dropdown;
       console.log("checking category", dropdown);
       if (dropdown && dropdown.length > 0) {
         setSelectedCategory(dropdown[0].category);
@@ -35,9 +36,9 @@ export default function Header() {
   }, [openDropdown]);
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow z-50 transparent-header">
-      <nav className="hidden navbar-expand-lg md:block">
-        <div className="flex flex-col md:flex-row w-[100%] gap-[20px] md:justify-between md:items-center">
-          <div className="navbar-header md:block w-[10%]">
+      <nav className="navbar-expand-lg">
+        <div className="flex flex-col flex-row w-[100%] gap-[20px] justify-between items-center">
+          <div className="navbar-header w-[10%]">
             <Link
               href="#"
               className="uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative w-[70px] h-[70px]"
@@ -45,8 +46,8 @@ export default function Header() {
               AptopsCloud
             </Link>
           </div>
-          <div className="flex w-[90%] justify-between gap-[15px]">
-            <ul className="flex flex-col w-[75%] md:justify-between md:flex-row navbar-nav">
+          <div className="collapse navbar-collapse flex w-[90%] justify-between gap-[15px]">
+            <ul className="flex flex-col w-[75%] justify-between flex-row navbar-nav">
               <li className="nav-item py-2 ai-bg relative">
                 <Link
                   href="#"
@@ -54,7 +55,7 @@ export default function Header() {
                 >
                   &nbsp;
                 </Link>
-              </li> 
+              </li>
               <li className=" nav-item  py-2 relative">
                 <Link
                   href="#"
@@ -66,15 +67,17 @@ export default function Header() {
               {navLinks.map((link) => (
                 <li
                   key={link.label}
-                  className={`nav-item py-2 relative ${link.dropdown && "dropdown mega-dropdown"
-                    }`}
+                  className={`nav-item py-2 relative ${
+                    link.dropdown && "dropdown mega-dropdown"
+                  }`}
                 >
                   <Link
                     href={link.href}
-                    className={`dropdown-toggle text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${openDropdown === link.label
+                    className={`dropdown-toggle text-gray-700 hover:text-blue-600 text-sm font-medium transition flex items-center nav-link uppercase text-white px-[14px] py-[20px] font-[ChivoSemiBold] text-[14px] relative ${
+                      openDropdown === link.label
                         ? "active text-[#016cd3] font-bold underline"
                         : ""
-                      }`}
+                    }`}
                     onClick={() =>
                       link.dropdown && handleDropdownToggle(link.label)
                     }
@@ -97,15 +100,17 @@ export default function Header() {
                             />
                           </svg>
                         </span>
-                        <abbr
-                          className="arrow-up w-[15px] h-[10px] absolute bottom-[-8px] left-0 right-0 mx-auto border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[10px] border-b-white hidden"
-                        ></abbr>
+                        <abbr className="arrow-up w-[15px] h-[10px] absolute bottom-[-8px] left-0 right-0 mx-auto border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[10px] border-b-white hidden"></abbr>
                       </>
                     )}
                   </Link>
                   {link.dropdown && (
                     <div
-                      className={`absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu transition-all duration-300 ease-in-out transform ${openDropdown === link.label ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"} origin-top`}
+                      className={`absolute top-full left-0 bg-white shadow-lg rounded mt-2 z-50 dropdown-menu mega-dropdown-menu transition-all duration-300 ease-in-out transform ${
+                        openDropdown === link.label
+                          ? "opacity-100 scale-y-100 visible"
+                          : "opacity-0 scale-y-95 invisible"
+                      } origin-top`}
                       // style={{
                       //   display: openDropdown === link.label ? "block" : "none",
                       // }}
@@ -121,45 +126,69 @@ export default function Header() {
                           </Link>
                         </div>
                         <div className="row flex flex-wrap -mx-3">
-                          <div className={`menu-scroll px-2 ${link.hasCategoryItem ? 'w-full sm:w-8/12' : 'w-full sm:w-full'}`}>
+                          <div
+                            className={`menu-scroll px-2 ${
+                              link.hasCategoryItem
+                                ? "w-full sm:w-8/12"
+                                : "w-full sm:w-full"
+                            }`}
+                          >
                             <ul
                               className="nav nav-tabs flex flex-wrap pl-0 mb-0 list-none"
                               id="menuoneTab"
                               role="tablist"
                             >
-                              {link.dropdown.map((category) => (
-                                link.hasCategoryItem ? 
-                                <li
-                                  key={category.category}
-                                  className={`nav-item ${link.hasCategoryItem?'basis-1/2':'basis-1/3'} flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
-                                      ? "bg-gray-100"
-                                      : ""
+                              {link.dropdown.map((category) =>
+                                link.hasCategoryItem ? (
+                                  <li
+                                    key={category.category}
+                                    className={`nav-item ${
+                                      link.hasCategoryItem
+                                        ? "basis-1/2"
+                                        : "basis-1/3"
+                                    } flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${
+                                      selectedCategory === category.category
+                                        ? "bg-gray-100"
+                                        : ""
                                     }`}
-                                  onClick={() =>
-                                    setSelectedCategory(category.category)
-                                  }
-                                >
-                                  <Link href={category.categoryHref} className="nav-link clr1">
-                                    {category.category}
-                                    <p>{category.description}</p>
-                                  </Link>
-                                </li>:
-                                <li
-                                key={category.category}
-                                className={`nav-item ${link.hasCategoryItem?'basis-1/2':'basis-1/3'} flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${selectedCategory === category.category
-                                    ? "bg-gray-100"
-                                    : ""
-                                  }`}
-                                >
-                                   <Link href={category.categoryHref} className="nav-link clr1">
-                                    {category.category}
-                                    <p>{category.description}</p>
-                                  </Link>
-                                </li>
-                              ))}
+                                    onClick={() =>
+                                      setSelectedCategory(category.category)
+                                    }
+                                  >
+                                    <Link
+                                      href={category.categoryHref}
+                                      className="nav-link clr1"
+                                    >
+                                      {category.category}
+                                      <p>{category.description}</p>
+                                    </Link>
+                                  </li>
+                                ) : (
+                                  <li
+                                    key={category.category}
+                                    className={`nav-item ${
+                                      link.hasCategoryItem
+                                        ? "basis-1/2"
+                                        : "basis-1/3"
+                                    } flex gap-3 items-start p-3 rounded-lg hover:bg-gray-100 cursor-pointer ${
+                                      selectedCategory === category.category
+                                        ? "bg-gray-100"
+                                        : ""
+                                    }`}
+                                  >
+                                    <Link
+                                      href={category.categoryHref}
+                                      className="nav-link clr1"
+                                    >
+                                      {category.category}
+                                      <p>{category.description}</p>
+                                    </Link>
+                                  </li>
+                                )
+                              )}
                             </ul>
                           </div>
-                          <div className="sm:w-1/3 md:w-1/3 bdr">
+                          <div className="sm:w-1/3 w-1/3 bdr">
                             <div
                               className="tab-content max-h-[550px] overflow-y-auto overflow-x-hidden"
                               id="menuOneTabContent"
@@ -172,12 +201,15 @@ export default function Header() {
                                 {selectedCategory &&
                                   link?.dropdown &&
                                   (() => {
-                                    const selectedCat: DropdownItem | undefined = link.dropdown.find(
+                                    const selectedCat:
+                                      | DropdownItem
+                                      | undefined = link.dropdown.find(
                                       (cat) => cat.category === selectedCategory
                                     );
 
-                                    if (!selectedCat || !selectedCat?.items) return null;
-                                    
+                                    if (!selectedCat || !selectedCat?.items)
+                                      return null;
+
                                     return (
                                       <ul className="sub-menu p-4">
                                         <li className="mb-0 py-[5px]">
@@ -212,8 +244,7 @@ export default function Header() {
                                         ))}
                                       </ul>
                                     );
-                                  })()
-                                  }
+                                  })()}
                               </div>
                             </div>
                           </div>
@@ -223,11 +254,10 @@ export default function Header() {
                   )}
                 </li>
               ))}
-              {/* <li className="nav-item md:px-2 lg:px-3 py-2 spacer"></li> */}
-           
+              {/* <li className="nav-item px-2 lg:px-3 py-2 spacer"></li> */}
             </ul>
             <ul className="action-item flex justify-evenly w-[25%] navbar-nav">
-            <li className="nav-item quote-btn z-10 self-center">
+              <li className="nav-item quote-btn z-10 self-center">
                 <Link
                   href="#"
                   className="nav-link bg-white text-[#016cd3] rounded-full flex items-center gap-[8px] whitespace-nowrap px-[15px] py-[10px] uppercase transition-transform duration-200 ease-linear font-bold"
@@ -251,11 +281,11 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu Icon */}
-      <div className="md:hidden">
-        <button onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+      <div className="mob-menu">
+      <button onClick={() => setMobileOpen(!mobileOpen)}>
+        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+    </div>
     </header>
   );
 }
