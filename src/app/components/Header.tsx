@@ -46,7 +46,7 @@ export default function Header() {
               AptopsCloud
             </Link>
           </div>
-          <div className="collapse navbar-collapse flex w-[90%] justify-between gap-[15px]">
+          <div className="desktop-nav  flex w-[90%] justify-between gap-[15px]">
             <ul className="flex flex-col w-[75%] justify-between flex-row navbar-nav">
               <li className="nav-item py-2 ai-bg relative">
                 <Link
@@ -281,8 +281,8 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu Icon */}
-      <div className="mob-menu">
-      <button onClick={() => setMobileOpen(!mobileOpen)}>
+      <div className="mob-menu absolute top-[32px] right-[25px] inline-block z-[9999999] hidden">
+      <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-close h-[27px] w-[30px] cursor-pointer block transition-all duration-[1000ms] ease-[cubic-bezier(.19,1,.22,1)]">
         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
     </div>

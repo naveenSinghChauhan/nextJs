@@ -312,10 +312,15 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
   .mob-menu{
     display: block;
   }
+  body header.transparent-header .navbar-expand-lg::before {
+    content: none;
+    display: none;
+  }
   /* .mobile-main-menu {
       display: block;
   } */
-  header .navbar-expand-lg .collapse.navbar-collapse {
+  header .navbar-expand-lg .desktop-nav {
     display: none !important;
 }
+
 }
