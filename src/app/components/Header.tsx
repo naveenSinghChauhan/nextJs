@@ -6,6 +6,7 @@ import { navLinks } from "@/constants/navLinks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavItem, DropdownItem } from "@/app/types/navlinkType";
+import MobileMenu from "./MobileMenu";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -13,16 +14,6 @@ export default function Header() {
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
   };
-  // useEffect(() => {
-  //   if (openDropdown) {
-  //     const dropdown = navLinks.find(
-  //       (link) => link.label === openDropdown
-  //     )?.dropdown;
-  //     if (dropdown && dropdown.length > 0 && !selectedCategory) {
-  //       setSelectedCategory(dropdown[0].category);
-  //     }
-  //   }
-  // }, [openDropdown, selectedCategory]);
   useEffect(() => {
     if (openDropdown) {
       const dropdown = navLinks.find(
@@ -282,10 +273,11 @@ export default function Header() {
 
       {/* Mobile Menu Icon */}
       <div className="mob-menu absolute top-[32px] right-[25px] inline-block z-[9999999] hidden">
-      <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-close h-[27px] w-[30px] cursor-pointer block transition-all duration-[1000ms] ease-[cubic-bezier(.19,1,.22,1)]">
-        {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-    </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="mobile-menu-close h-[27px] w-[30px] cursor-pointer block transition-all duration-[1000ms] ease-[cubic-bezier(.19,1,.22,1)]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      <MobileMenu showMobile={mobileOpen}/>
     </header>
   );
 }

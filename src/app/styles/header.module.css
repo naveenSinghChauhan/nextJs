@@ -231,8 +231,14 @@ body header.transparent-header .navbar-expand-lg .navbar-nav .nav-item .mega-dro
   border-bottom-color: #016cd3;
   border-right-color: #016cd3;
 }
-
-
+/* 
+"#########################
+MOBILE CSS
+####################
+*/
+.mobile-main-menu.show-menu .mobile_version {
+  right: 0;
+}
 
 /* 
 "#########################
