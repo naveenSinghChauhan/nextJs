@@ -8,13 +8,13 @@ import WeServe from "./components/WeServe";
 export default function Home() {
   return (
 <>
-<Banner />
+{/* <Banner />
 <TabSection />
 <WeServe />
 <TestimonialCarousel />
 <NewsSection />
 <ContactSection />
-<Footer />
+<Footer /> */}
  
 </>
   );
